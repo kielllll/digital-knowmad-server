@@ -1,0 +1,31 @@
+{
+  "name": "app-server",
+  "version": "0.1.1",
+  "description": "Application server of the Course Booking System",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon index.js",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@gitlab.com:tuitt/students/batch95/ezekiel-tarranza/csp2/app-server.git"
+  },
+  "keywords": [
+    "Node.js",
+    "Express",
+    "Capstone",
+    "Course",
+    "Booking"
+  ],
+  "author": "Ezekiel Tarranza",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "mongoose": "^5.12.4"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  }
+}

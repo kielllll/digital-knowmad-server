@@ -4,6 +4,9 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 require("dotenv").config();
 
+// Application routes
+const userRoutes = require("./routes/users");
+
 // express instance
 const app = express();
 
@@ -40,6 +43,9 @@ app.get("/", (req, res) => {
     message: "The Course Booking System API",
   });
 });
+
+// User application route
+app.use("/api/users", userRoutes);
 
 app.listen(port, () =>
   console.log(`Application server is running at http://localhost:${port}`)

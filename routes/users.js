@@ -12,7 +12,12 @@ const UserController = require("../controllers/user");
 
 // Create a new user
 router.post("/register", (req, res) => {
-  res.send(UserController.register(req.body));
+  UserController.register(req.body).then((result) => {
+    res.json({
+      message: "New user has been created",
+      data: result,
+    });
+  });
 });
 
 // Retrieve all users

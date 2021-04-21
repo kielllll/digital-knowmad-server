@@ -34,3 +34,10 @@ module.exports.register = ({
 // Update a user details
 
 // Delete an existing user
+
+// Check if user (email) already exist
+module.exports.checkEmail = ({ emailAddress }) => {
+  return User.find({ emailAddress }).then((result) => {
+    return result.length > 0;
+  });
+};

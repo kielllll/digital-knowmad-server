@@ -13,7 +13,7 @@ const UserController = require("../controllers/user");
 // Create a new user
 router.post("/register", (req, res) => {
   UserController.register(req.body).then((result) => {
-    res.json({
+    res.send({
       message: "New user has been created",
       data: result,
     });
@@ -31,5 +31,14 @@ router.post("/register", (req, res) => {
 
 // Delete an existing user
 // router.delete();
+
+// Check if the user (email) already exist
+router.post("/check-email", (req, res) => {
+  UserController.checkEmail(req.body).then((result) => {
+    res.send({
+      data: result,
+    });
+  });
+});
 
 module.exports = router;

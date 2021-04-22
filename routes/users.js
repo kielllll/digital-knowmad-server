@@ -41,4 +41,13 @@ router.post("/check-email", (req, res) => {
   });
 });
 
+// Login a user
+router.post("/login", (req, res) => {
+  UserController.login(req.body).then((user) => {
+    res.send({
+      data: user,
+    });
+  });
+});
+
 module.exports = router;

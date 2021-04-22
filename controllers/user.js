@@ -41,3 +41,15 @@ module.exports.checkEmail = ({ emailAddress }) => {
     return result.length > 0;
   });
 };
+
+// Login a user
+module.exports.login = ({ emailAddress, password }) => {
+  return User.findOne({ emailAddress }).then((user) => {
+    // If user was not found
+    if (!user) return false;
+    else {
+      console.log(user.password);
+      return bcrypt.compareSync(password, user.password);
+    }
+  });
+};

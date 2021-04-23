@@ -24,7 +24,11 @@ router.post("/register", (req, res) => {
 // router.get();
 
 // Retrieve a specific user by ID
-router.get("/details", (req, res) => {});
+router.get("/details", (req, res) => {
+  UserController.getUserDetails(req.query).then((userDetails) => {
+    res.send({ userDetails });
+  });
+});
 
 // Update a user details
 // router.put();

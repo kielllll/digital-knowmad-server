@@ -32,14 +32,15 @@ module.exports.register = ({
 // Retrieve a specific user by ID
 
 // Update a user details
+module.exports.getUserDetails = ({ id: userId }) => {
+  return User.findById(userId, "-password").then((userDetails) => userDetails);
+};
 
 // Delete an existing user
 
 // Check if user (email) already exist
 module.exports.checkEmail = ({ emailAddress }) => {
-  return User.find({ emailAddress }).then((result) => {
-    return result.length > 0;
-  });
+  return User.find({ emailAddress }).then((result) => result.length > 0);
 };
 
 // Login a user

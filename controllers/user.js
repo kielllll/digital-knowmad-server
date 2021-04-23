@@ -44,12 +44,21 @@ module.exports.checkEmail = ({ emailAddress }) => {
 
 // Login a user
 module.exports.login = ({ emailAddress, password }) => {
-  return User.findOne({ emailAddress }).then((user) => {
-    // If user was not found
-    if (!user) return false;
+  return User.findOne({ emailAddress }, "password").then((user) => {
+    if (!user)
+      // User not found
+      return false;
     else {
-      console.log(user.password);
-      return bcrypt.compareSync(password, user.password);
+      // Check password
+      const isPasswordMatched = bcrypt.compareSync(password, user.password);
+      if (isPasswordMatched) {
+        let userDetails = user.toObject();
+        delete userDetails.password;
+        return {
+          data: true,
+          userDetails,
+        };
+      } else return { data: false };
     }
   });
 };

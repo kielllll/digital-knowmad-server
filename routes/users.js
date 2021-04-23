@@ -24,7 +24,7 @@ router.post("/register", (req, res) => {
 // router.get();
 
 // Retrieve a specific user by ID
-// router.get();
+router.get("/details", (req, res) => {});
 
 // Update a user details
 // router.put();
@@ -43,9 +43,11 @@ router.post("/check-email", (req, res) => {
 
 // Login a user
 router.post("/login", (req, res) => {
-  UserController.login(req.body).then((user) => {
+  UserController.login(req.body).then((result) => {
+    const { data, userDetails } = result;
     res.send({
-      data: user,
+      data,
+      userDetails,
     });
   });
 });

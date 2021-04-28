@@ -6,6 +6,7 @@ require("dotenv").config();
 
 // Application routes
 const userRoutes = require("./routes/users");
+const courseRoutes = require("./routes/courses");
 
 // express instance
 const app = express();
@@ -46,6 +47,7 @@ app.get("/", (req, res) => {
 
 // User application route
 app.use("/api/users", userRoutes);
+app.use("/api/courses", courseRoutes);
 
 app.listen(port, () =>
   console.log(`Application server is running at http://localhost:${port}`)

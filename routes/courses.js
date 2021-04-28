@@ -2,7 +2,14 @@
 const express = require("express");
 const router = express.Router();
 
+// Controllers
+const CourseController = require("../controllers/course");
+
 // Main Route
-router.get("/", (req, res) => res.send("GET /api/courses"));
+router.get("/", (req, res) => {
+  CourseController.getAll().then((courses) => {
+    res.send({ courses });
+  });
+});
 
 module.exports = router;

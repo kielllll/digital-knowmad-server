@@ -20,7 +20,10 @@ const courseSchema = new mongoose.Schema({
         type: Date,
         default: new Date(),
       },
-      status: String,
+      status: {
+        type: String,
+        default: "active",
+      },
     },
   ],
 });

@@ -56,4 +56,12 @@ router.post("/login", (req, res) => {
   });
 });
 
+// Enroll a user to a course
+router.post("/enroll", (req, res) => {
+  const { userId, courseId } = req.body;
+  UserController.enroll(userId, courseId).then((result) =>
+    res.send({ message: result })
+  );
+});
+
 module.exports = router;

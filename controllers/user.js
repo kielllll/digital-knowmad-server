@@ -1,8 +1,9 @@
 // Dependencies
 const bcrypt = require("bcrypt");
 
-// User controller
+// Models
 const User = require("../models/User");
+const Course = require("../models/Course");
 
 // Create a new user
 module.exports.register = ({
@@ -61,5 +62,20 @@ module.exports.login = ({ emailAddress, password }) => {
         };
       } else return { data: false };
     }
+  });
+};
+
+// Enroll a user
+module.exports.enroll = async (userId, courseId) => {
+  // Find the user and course documents via IDs
+  let user = await User.findById(userId).exec();
+  let course = await Course.findById(courseId).exec();
+
+  user.enrollments = [...user.enrollments, { courseName: course.name }];
+
+  return user.save().then((_, err) => {
+    course.enrollees = [...course.enrollees, userId];
+
+    return course.save().then((_, err) => (err ? false : true));
   });
 };

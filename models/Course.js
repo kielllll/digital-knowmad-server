@@ -15,15 +15,8 @@ const courseSchema = new mongoose.Schema({
   },
   enrollees: [
     {
-      userId: String,
-      enrolledOn: {
-        type: Date,
-        default: new Date(),
-      },
-      status: {
-        type: String,
-        default: "active",
-      },
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
     },
   ],
 });
